@@ -6,6 +6,31 @@ using UnityEngine;
 
 public abstract class IWeapon {
 
+    /// <summary>
+    /// 武器的攻击力
+    /// </summary>
+    protected int mAtk;
+
+    /// <summary>
+    /// 武器攻击力加成
+    /// </summary>
+    protected int mAtkPlusValue;
+
+    /// <summary>
+    /// 武器攻击范围
+    /// </summary>
+    protected float mAtkRange;
+
+    protected GameObject mContent;
+    protected ICharacter mOwenr;
+    protected ParticleSystem mPariticle;
+    protected LineRenderer mLine;
+    protected Light mLight;
+    protected AudioSource mAudio;
+
+    /// <summary>
+    /// 武器名字
+    /// </summary>
     protected string mName;
 
     public IWeapon() {
