@@ -17,9 +17,19 @@ namespace Assets.Scripts.FacadeModeAndSingleMode {
             }
         }
 
+        
 
+        public void OnStart() {
+            DebugMy.Log("OnStart", this);
+        }
 
+        public void OnUpdate() {
+            DebugMy.Log("OnUpdate", this);
+        }
 
+        public void OnExit() {
+            DebugMy.Log("OnExit", this);
+        }
 
 
 
