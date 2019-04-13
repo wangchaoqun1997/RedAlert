@@ -4,9 +4,5 @@ using System.Linq;
 using System.Text;
 
 public class WeaponGun:IWeapon {
-
-    public WeaponGun() {
-        mName = "WeaponGun";
-    }
-
+    
 }
