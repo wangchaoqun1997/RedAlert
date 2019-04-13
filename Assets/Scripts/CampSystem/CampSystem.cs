@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Scripts.CampSystem {
-    class CampSystem : IGameSystem {
+public class CampSystem : IGameSystem {
 
-    }
 }

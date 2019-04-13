@@ -3,7 +3,5 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Scripts.ArchievementSystem {
-    class ArchievementSystem : IGameSystem {
-    }
+public class ArchievementSystem : IGameSystem {
 }

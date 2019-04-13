@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Scripts.GameEventSystem {
-    class GameEventSystem : IGameSystem {
-     
+public class GameEventSystem : IGameSystem {
 
-    }
+
 }

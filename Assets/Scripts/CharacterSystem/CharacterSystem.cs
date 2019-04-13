@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Scripts.CharacterSystem {
-    class CharacterSystem : IGameSystem { 
+public class CharacterSystem : IGameSystem {
 
-    }
 }

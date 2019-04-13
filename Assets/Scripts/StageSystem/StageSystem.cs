@@ -3,5 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class CampInfoUI : IUISystem {
+public class StageSystem:IGameSystem {
+
 }
