@@ -32,6 +32,7 @@ public class BaseState  {
             isDoStart = true;
             OnStart();
         }
+        DebugMy.Log("OnUpdate", this);
 
     }
 
