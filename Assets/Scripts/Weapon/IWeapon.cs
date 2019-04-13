@@ -39,6 +39,28 @@ public abstract class IWeapon {
 
     public virtual void Fire(Vector3 targetPosition) {
         DebugMy.Log("Fire"+":"+ mName, this);
+
+        ///显示枪口特效
+        PlayMuzzleEffect();
+
+        ///显示子弹轨迹特效
+        PlayBulletEffect(targetPosition);
+
+        ///设置特效显示时间
+        SetEffetDisplayTime();
+
+        ///播放声音
+        PlaySound();
     }
+
+    protected virtual void PlayMuzzleEffect() {
+        mPariticle.Stop();
+        mPariticle.Play();
+        mLight.enabled = true;
+    }
+
+    protected abstract void PlayBulletEffect(Vector3 targetPosition);
+    protected abstract void PlaySound();
+    protected abstract void SetEffetDisplayTime();
 
 }
