@@ -12,4 +12,16 @@ public abstract class ICharacter {
     protected GameObject mContent;
     protected NavMeshAgent mNavAgent;
     protected AudioSource mAudio;
+
+
+    protected IWeapon mWeapone;
+
+
+    public void Fire(Vector3 targetPosition) {
+        if (mWeapone == null) {
+            DebugMy.Log("No weapone",this);
+            return;
+        }
+        mWeapone.Fire(targetPosition);
+    }
 }
