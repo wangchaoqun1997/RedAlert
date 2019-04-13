@@ -8,12 +8,12 @@ public class BattleState : BaseState {
         stateType = StateType.BattleState;
         sceneName = SceneName.battleScene;
     }
-    public override void UpdateAction() {
-        base.UpdateAction();
+    public override void OnUpdate() {
+        base.OnUpdate();
     }
 
-    public override void OnEnter() {
-        base.OnEnter();
+    public override void OnStart() {
+        base.OnStart();
     }
 
     public override void OnExit() {

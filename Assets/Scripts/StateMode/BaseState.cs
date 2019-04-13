@@ -9,35 +9,42 @@ public class BaseState  {
     public string sceneName;
     public StateType stateType=StateType.Default;
     AsyncOperation asyncLoad;
-    bool isSceneLoaded = false;
+    bool isDoStart = false;
+    public bool isStateInitFinish {
+        get {
+            if (asyncLoad.isDone) {
+                //DebugMy.Log("UpdateAction SceneLoaded", this);
+                return true;
+            }
+            DebugMy.Log("UpdateAction isStateInitFinish==false", this);
+            return false;
+        }
+    }
 
     public BaseState() {
     }
 
-    public virtual void UpdateAction() {
-        //DebugMy.Log("UpdateAction", this);
-        if (!asyncLoad.isDone) {
-            DebugMy.Log("UpdateAction isDone==false", this);
+    public virtual void OnUpdate() {
+        if (! isStateInitFinish) {
             return;
         }
-        if (isSceneLoaded == false) {
-            DebugMy.Log("UpdateAction SceneLoaded", this);
-            isSceneLoaded = true;
-            OnEnter();
+        if (isDoStart == false) {
+            isDoStart = true;
+            OnStart();
         }
 
     }
 
-    public virtual void OnPreEnter() {
-        DebugMy.Log("OnPreEnter",this);
+    public void OnPreStart() {
+        DebugMy.Log("OnPreStart", this);
         asyncLoad = SceneManager.LoadSceneAsync(sceneName);
     }
 
-    public virtual void OnEnter() {
-        DebugMy.Log("OnEnter", this);
+    public virtual void OnStart() {
+        DebugMy.Log("OnStart", this);
     }
     public virtual void OnExit() {
         DebugMy.Log("OnExit", this);
-        isSceneLoaded = false;
+        isDoStart = false;
     }
 }

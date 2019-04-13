@@ -25,12 +25,14 @@ public class StateController  {
         }
         currentState = newState;
 
-        currentState.OnPreEnter();
+        currentState.OnPreStart();
 
     }
 
-    public void UpdateAction() {
-        currentState.UpdateAction();
+    public void OnUpdate() {
+        if (currentState != null && currentState.isStateInitFinish) {
+            currentState.OnUpdate();
+        }
     }
 
 }

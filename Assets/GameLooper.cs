@@ -17,11 +17,14 @@ public class GameLooper : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StateController.Instant.SetState(new MainMenuState());
+        StateController.Instant.SetState(new LogoState());
     }
 	
 	// Update is called once per frame
 	void Update () {
-        StateController.Instant.UpdateAction();
+        StateController.Instant.OnUpdate();
+        
 	}
+
+    
 }
