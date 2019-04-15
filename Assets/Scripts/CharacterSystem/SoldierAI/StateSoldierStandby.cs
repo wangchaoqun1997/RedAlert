@@ -4,15 +4,17 @@ using System.Text;
 using UnityEngine;
 
 public class StateSoldierStandby : SoldierFSMState {
-    public StateSoldierStandby(SoldierFSMSystem mFSM) : base(mFSM) { }
+    public StateSoldierStandby(SoldierFSMSystem mFSM, ICharacter mCharacter) : base(mFSM, mCharacter) { }
 
     public override void Act(List<ICharacter> enemys) {
-        throw new NotImplementedException();
+        mCharacter.Standby("idel");
     }
 
     public override void Reason(List<ICharacter> enemys) {
-        if (true) {
+
+        if (enemys != null && enemys.Count > 0) {
             mFSM.PerformTransition(SoldierTransition.SeeEnemy);
+            return;
         }
     }
 }

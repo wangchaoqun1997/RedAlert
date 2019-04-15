@@ -7,14 +7,16 @@ public abstract class SoldierFSMState {
     protected SoldierStateID stateID;
     public SoldierStateID ID { get { return stateID; } }
     protected SoldierFSMSystem mFSM;
+    protected ICharacter mCharacter;
 
     /// <summary>
     /// 本状态可以切换到的状态集合及条件集合
     /// </summary>
     protected Dictionary<SoldierTransition, SoldierStateID> map = new Dictionary<SoldierTransition, SoldierStateID>();
 
-    protected SoldierFSMState(SoldierFSMSystem mFSM) {
+    protected SoldierFSMState(SoldierFSMSystem mFSM, ICharacter mCharacter) {
         this.mFSM = mFSM;
+        this.mCharacter = mCharacter;
     }
 
 

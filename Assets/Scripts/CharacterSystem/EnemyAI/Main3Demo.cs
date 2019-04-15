@@ -8,6 +8,7 @@ public class Main3Demo:MonoBehaviour {
     private EnemyFSMSystem mFSMSystem;
     public GameObject player;
 
+
     private void MakeFSM() {
         mFSMSystem = new EnemyFSMSystem();
 
@@ -27,8 +28,9 @@ public class Main3Demo:MonoBehaviour {
     }
 
     public void Update() {
-        mFSMSystem.CurrentState.Reason(player, gameObject);
-        mFSMSystem.CurrentState.Act(player, gameObject);
+        List<ICharacter> character = new List<ICharacter>();
+        mFSMSystem.CurrentState.Reason(character);
+        mFSMSystem.CurrentState.Act(character);
     }
 
 }

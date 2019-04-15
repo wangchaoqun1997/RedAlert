@@ -12,18 +12,41 @@ public abstract class ICharacter {
     protected GameObject mContent;
     protected NavMeshAgent mNavAgent;
     protected AudioSource mAudio;
+    private Animation mAnim;
 
-
-    protected IWeapon mWeapone;
-
-
-    public void Fire(Vector3 targetPosition) {
-        if (mWeapone == null) {
-            DebugMy.Log("No weapone",this);
-            return;
+    protected IWeapon mWeapon;
+    public Vector3 position {
+        get {
+            if (mContent == null) {
+                Debug.LogError("mContent为空"); return Vector3.zero;
+            }
+            return mContent.transform.position;
         }
-        mWeapone.Fire(targetPosition);
+    }
+    public float atkRange {
+        get { return mWeapon.mAtkRange; }
     }
 
+    public void Attack(ICharacter target) {
+        if (mWeapon == null) {
+            DebugMy.Log("No weapone", this);
+            return;
+        }
+        mWeapon.Fire(target.position);
+        PlayAnim("attack");
+    }
+
+    public void MoveTo(Vector3 targetPosition) {
+        mNavAgent.SetDestination(targetPosition);
+        PlayAnim("move");
+    }
+
+    public void PlayAnim(string animName) {
+        mAnim.CrossFade(animName);
+    }
+
+    public void Standby(string animName) {
+        PlayAnim(animName);
+    }
     protected abstract void UpdateFSMAI(List<ICharacter> targets);
 }

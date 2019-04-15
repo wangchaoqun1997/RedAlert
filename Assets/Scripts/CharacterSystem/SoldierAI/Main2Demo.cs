@@ -6,19 +6,19 @@ using UnityEngine;
 public class Main2Demo:MonoBehaviour {
 
     private SoldierFSMSystem mFSMSystem;
-    public GameObject player;
+    public ICharacter  player;
 
     private void MakeFSM() {
         mFSMSystem = new SoldierFSMSystem();
 
-        SoldierFSMState standbyState = new StateSoldierStandby(mFSMSystem);
+        SoldierFSMState standbyState = new StateSoldierStandby(mFSMSystem, player);
         standbyState.AddTransition(SoldierTransition.SeeEnemy, SoldierStateID.ChaseState);
 
-        SoldierFSMState chaseState = new StateSoldierChase(mFSMSystem);
+        SoldierFSMState chaseState = new StateSoldierChase(mFSMSystem, player);
         chaseState.AddTransition(SoldierTransition.DonotSeeEnemy, SoldierStateID.StandbyState);
         chaseState.AddTransition(SoldierTransition.EnemyInTheAttackRange, SoldierStateID.AttackState);
 
-        SoldierFSMState attackState = new StateSoldierAttack(mFSMSystem);
+        SoldierFSMState attackState = new StateSoldierAttack(mFSMSystem, player);
         attackState.AddTransition(SoldierTransition.DonotSeeEnemy, SoldierStateID.StandbyState);
         attackState.AddTransition(SoldierTransition.EnemyOutOfTheAttackRange, SoldierStateID.ChaseState);
 
@@ -33,8 +33,9 @@ public class Main2Demo:MonoBehaviour {
     }
 
     public void Update() {
-        mFSMSystem.CurrentState.Reason(player, gameObject);
-        mFSMSystem.CurrentState.Act(player, gameObject);
+        List<ICharacter> character = new List<ICharacter>();
+        mFSMSystem.CurrentState.Reason(character);
+        mFSMSystem.CurrentState.Act(character);
     }
 
 }

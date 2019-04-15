@@ -19,7 +19,7 @@ public abstract class IWeapon {
     /// <summary>
     /// 武器攻击范围
     /// </summary>
-    protected float mAtkRange;
+    public float mAtkRange;
 
     protected GameObject mContent;
     protected ICharacter mOwenr;
