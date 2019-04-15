@@ -6,16 +6,16 @@ using UnityEngine;
 public class Main3Demo:MonoBehaviour {
 
     private EnemyFSMSystem mFSMSystem;
-    public GameObject player;
+    public ICharacter player;
 
 
     private void MakeFSM() {
         mFSMSystem = new EnemyFSMSystem();
 
-        EnemyFSMState chaseState = new StateEnemyChase(mFSMSystem);
+        EnemyFSMState chaseState = new StateEnemyChase(mFSMSystem, player);
         chaseState.AddTransition(EnemyTransition.SoldierInTheAttackRange, EnemyStateID.AttackState);
 
-        EnemyFSMState attackState = new StateEnemyAttack(mFSMSystem);
+        EnemyFSMState attackState = new StateEnemyAttack(mFSMSystem, player);
         attackState.AddTransition(EnemyTransition.SoldierOutOfTheAttackRange, EnemyStateID.ChaseState);
         
         mFSMSystem.AddState(chaseState);

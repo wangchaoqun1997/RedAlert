@@ -13,10 +13,10 @@ public abstract class IEnemy:ICharacter {
     private void MakeFSM() {
         mFSMSystem = new EnemyFSMSystem();
 
-        EnemyFSMState chaseState = new StateEnemyChase(mFSMSystem);
+        EnemyFSMState chaseState = new StateEnemyChase(mFSMSystem,this);
         chaseState.AddTransition(EnemyTransition.SoldierInTheAttackRange, EnemyStateID.AttackState);
 
-        EnemyFSMState attackState = new StateEnemyAttack(mFSMSystem);
+        EnemyFSMState attackState = new StateEnemyAttack(mFSMSystem, this);
         attackState.AddTransition(EnemyTransition.SoldierOutOfTheAttackRange, EnemyStateID.ChaseState);
 
         mFSMSystem.AddState(chaseState);

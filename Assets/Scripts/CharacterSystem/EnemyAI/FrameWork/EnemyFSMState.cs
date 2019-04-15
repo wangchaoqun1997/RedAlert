@@ -7,14 +7,16 @@ public abstract class EnemyFSMState {
     protected EnemyStateID stateID;
     public EnemyStateID ID { get { return stateID; } }
     protected EnemyFSMSystem mFSM;
+    protected ICharacter mCharacter;
 
     /// <summary>
     /// 本状态可以切换到的状态集合及条件集合
     /// </summary>
     protected Dictionary<EnemyTransition, EnemyStateID> map = new Dictionary<EnemyTransition, EnemyStateID>();
 
-    protected EnemyFSMState(EnemyFSMSystem mFSM) {
+    protected EnemyFSMState(EnemyFSMSystem mFSM, ICharacter mCharacter) {
         this.mFSM = mFSM;
+        this.mCharacter = mCharacter;
     }
 
 
