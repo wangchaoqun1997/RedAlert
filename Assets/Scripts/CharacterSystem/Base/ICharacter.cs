@@ -24,4 +24,6 @@ public abstract class ICharacter {
         }
         mWeapone.Fire(targetPosition);
     }
+
+    protected abstract void UpdateFSMAI(List<ICharacter> targets);
 }
