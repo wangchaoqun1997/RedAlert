@@ -10,6 +10,11 @@ public abstract class IWeapon {
     /// 武器的攻击力
     /// </summary>
     protected int mAtk;
+    public int atk {
+        get {
+            return mAtk;
+        }
+    }
 
     /// <summary>
     /// 武器攻击力加成
@@ -19,8 +24,12 @@ public abstract class IWeapon {
     /// <summary>
     /// 武器攻击范围
     /// </summary>
-    public float mAtkRange;
-
+    protected float mAtkRange;
+    public float atkRange {
+        get {
+            return mAtkRange;
+        }
+    }
     protected GameObject mContent;
     protected ICharacter mOwenr;
     protected ParticleSystem mPariticle;

@@ -6,15 +6,18 @@ using System.Text;
 
 class SoldierAttrStrategy : IAttrStrategy {
 
-    protected override void GetExtraHP(int lv) {
+    public override int GetExtraHP(int lv) {
         base.GetExtraHP(lv);
+        return (lv - 1) * 10;
     }
 
-    protected override void GetDmgDescValue(int lv) {
+    public override int GetDmgDescValue(int lv) {
         base.GetDmgDescValue(lv);
+        return (lv - 1) * 5;
     }
 
-    protected override void GetCritDmg(float critRate) {
+    public override int GetCritDmg(float critRate) {
         base.GetCritDmg(critRate);
+        return 0;
     }
 }

@@ -15,6 +15,7 @@ public abstract class ICharacter {
     private Animation mAnim;
 
     protected IWeapon mWeapon;
+
     public Vector3 position {
         get {
             if (mContent == null) {
@@ -24,7 +25,7 @@ public abstract class ICharacter {
         }
     }
     public float atkRange {
-        get { return mWeapon.mAtkRange; }
+        get { return mWeapon.atkRange; }
     }
 
     public void Attack(ICharacter target) {
@@ -34,6 +35,12 @@ public abstract class ICharacter {
         }
         mWeapon.Fire(target.position);
         PlayAnim("attack");
+        mContent.transform.LookAt(target.position);
+        target.UnderAttack(mWeapon.atk + mAttr.critValue);
+    }
+
+    public virtual void UnderAttack(float damage) {
+
     }
 
     public void MoveTo(Vector3 targetPosition) {
@@ -49,4 +56,8 @@ public abstract class ICharacter {
         PlayAnim(animName);
     }
     protected abstract void UpdateFSMAI(List<ICharacter> targets);
+
+    public virtual void OnUpdate(List<ICharacter> targets) {
+
+    }
 }

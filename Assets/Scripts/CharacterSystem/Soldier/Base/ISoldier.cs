@@ -34,4 +34,8 @@ public abstract class ISoldier : ICharacter {
         mFSMSystem.CurrentState.Act(enemys);
     }
 
+    public override void OnUpdate(List<ICharacter> enemys) {
+        UpdateFSMAI(enemys);
+    }
+
 }

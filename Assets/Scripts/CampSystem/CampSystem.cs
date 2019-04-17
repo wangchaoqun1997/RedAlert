@@ -4,5 +4,7 @@ using System.Linq;
 using System.Text;
 
 public class CampSystem : IGameSystem {
-
+    public override void OnUpdate() {
+        throw new NotImplementedException();
+    }
 }

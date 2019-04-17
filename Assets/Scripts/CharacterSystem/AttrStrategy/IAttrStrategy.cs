@@ -9,23 +9,26 @@ public abstract class IAttrStrategy {
     /// 根据角色等级提高其总血量
     /// </summary>
     /// <param name="lv"></param>
-    protected virtual void GetExtraHP(int lv) {
+    public virtual int GetExtraHP(int lv) {
         DebugMy.Log("GetExtraHP", this);
+        return 0;
     }
 
     /// <summary>
     /// 根据角色等级减少其受到伤害量
     /// </summary>
     /// <param name="lv"></param>
-    protected virtual void GetDmgDescValue(int lv) {
+    public virtual int GetDmgDescValue(int lv) {
         DebugMy.Log("GetDmgDescValue", this);
+        return 0;
     }
 
     /// <summary>
     /// 随机暴击量
     /// </summary>
     /// <param name="critRate"></param>
-    protected virtual void GetCritDmg(float critRate) {
+    public virtual int GetCritDmg(float critRate) {
         DebugMy.Log("GetCritDmg", this);
+        return 0;
     }
 }
