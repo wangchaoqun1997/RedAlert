@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-
+public enum WeaponType {
+    Gun = 0,
+    Rifle = 1,
+    Rocket = 2,
+    MAX
+}
 public abstract class IWeapon {
 
     /// <summary>

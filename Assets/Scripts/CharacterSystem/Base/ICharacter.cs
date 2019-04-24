@@ -28,6 +28,10 @@ public abstract class ICharacter {
         get { return mWeapon.atkRange; }
     }
 
+    /// <summary>
+    /// 攻击
+    /// </summary>
+    /// <param name="target"></param>
     public void Attack(ICharacter target) {
         if (mWeapon == null) {
             DebugMy.Log("No weapone", this);
@@ -39,6 +43,10 @@ public abstract class ICharacter {
         target.UnderAttack(mWeapon.atk + mAttr.critValue);
     }
 
+    /// <summary>
+    /// 被攻击后
+    /// </summary>
+    /// <param name="damage"></param>
     public virtual void UnderAttack(float damage) {
 
     }
