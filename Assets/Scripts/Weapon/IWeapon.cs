@@ -47,8 +47,17 @@ public abstract class IWeapon {
     /// </summary>
     protected string mName;
 
-    public IWeapon() {
+    public IWeapon(int atk, int range, GameObject obj) {
         mName = this.GetType().ToString();
+        mAtk = atk;
+        mAtkRange = range;
+        mContent = obj;
+        ///如下获取mContent后直接从其上获取
+        Transform effect = mContent.transform.Find("Effect");
+        mPariticle = effect.GetComponent<ParticleSystem>();
+        mLine = effect.GetComponent<LineRenderer>();
+        mLight = effect.GetComponent<Light>();
+        mAudio = effect.GetComponent<AudioSource>();
     }
 
     public virtual void Fire(Vector3 targetPosition) {

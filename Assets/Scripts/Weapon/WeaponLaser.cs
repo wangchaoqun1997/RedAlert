@@ -5,6 +5,9 @@ using System.Text;
 using UnityEngine;
 
 public class WeaponLaser : IWeapon {
+    public WeaponLaser(int atk, int range, GameObject obj) : base(atk, range, obj) {
+    }
+
     protected override void PlayBulletEffect(Vector3 targetPosition) {
         throw new NotImplementedException();
     }
