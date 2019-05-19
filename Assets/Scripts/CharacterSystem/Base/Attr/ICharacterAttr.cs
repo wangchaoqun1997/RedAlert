@@ -5,9 +5,21 @@ using System.Text;
 
 public class ICharacterAttr {
 
-    protected string mName;
-    protected int mInitHP;
-    protected float mMoveSpeed;
+
+    protected CharacterBaseAttr mBaseAttr;
+
+    public ICharacterAttr(IAttrStrategy strategy, int lv, CharacterBaseAttr baseAttr) {
+        mLv = lv;
+        mBaseAttr = baseAttr;
+        mAttrStrategy = strategy;
+        mDmgDescValue = mAttrStrategy.GetDmgDescValue(mLv);
+        mCurrentHp = baseAttr.maxHP + mAttrStrategy.GetExtraHP(mLv);
+    }
+
+     /// <summary>
+    /// 角色等级
+    /// </summary>
+    protected int mLv;
 
     protected int mCurrentHp;
     public int currentHp {
@@ -23,22 +35,6 @@ public class ICharacterAttr {
         }
     }
 
-    /// <summary>
-    /// 暴击率，取值范围float 0-1
-    /// </summary>
-    protected int mCritRate;
-    public int critValue {
-        get {
-            return mAttrStrategy.GetCritDmg(mCritRate);
-        }
-    }
-
-    protected string mIconSprite;
-
-    /// <summary>
-    /// 角色等级
-    /// </summary>
-    protected int mLv;
     
 
     ///角色等级可以提高角色的总血量和抵御伤害，暴击率可以随机产生暴击，这些都是通过一定的算法来得出
